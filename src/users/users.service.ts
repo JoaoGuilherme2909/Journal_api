@@ -10,7 +10,7 @@ export class UsersService {
   async resgister({ hash, email, name }: CreateUserDto) {
     const hasedPassword = await argon.hash(hash);
 
-    const user = this.prisma.user.create({
+    const user = this.prisma.users.create({
       data: {
         email,
         name,
@@ -22,7 +22,7 @@ export class UsersService {
   }
 
   async userAlreadyExists(email: string) {
-    return this.prisma.user.findUnique({
+    return this.prisma.users.findUnique({
       where: {
         email,
       },

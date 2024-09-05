@@ -1,3 +1,4 @@
+import { ApiProperty } from '@nestjs/swagger';
 import { z } from 'zod';
 
 export const createUserSchema = z
@@ -18,3 +19,19 @@ export const logInUserSchema = z
   .required();
 
 export type logInUserDto = z.infer<typeof logInUserSchema>;
+
+export class CreateUserSwaggerDto {
+  @ApiProperty({ description: 'Email', example: 'email@example.com' })
+  email: string;
+  @ApiProperty({ description: 'Nome', example: 'John Doe' })
+  name: string;
+  @ApiProperty({ description: 'senha', example: '12345678' })
+  hash: string;
+}
+
+export class LogInUserSwaggerDto {
+  @ApiProperty({ description: 'Email', example: 'email@example.com' })
+  email: string;
+  @ApiProperty({ description: 'senha', example: '12345678' })
+  hash: string;
+}

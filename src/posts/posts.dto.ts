@@ -1,3 +1,4 @@
+import { ApiProperty } from '@nestjs/swagger';
 import { z } from 'zod';
 
 export const createPostSchema = z
@@ -15,3 +16,23 @@ export const updatePostSchema = z.object({
 });
 
 export type updatePostDto = z.infer<typeof updatePostSchema>;
+
+export class CreatePostSwaggerDto {
+  @ApiProperty({ description: 'O titulo de um post', example: 'Tirar o lixo' })
+  title: string;
+  @ApiProperty({
+    description: 'O conteudo de um post',
+    example: 'Comprar 3 bananas',
+  })
+  content: string;
+}
+
+export class updatePostSwaggerDto {
+  @ApiProperty({ description: 'O titulo de um post', example: 'Tirar o lixo' })
+  title: string;
+  @ApiProperty({
+    description: 'O conteudo de um post',
+    example: 'Comprar 3 bananas',
+  })
+  content: string;
+}
